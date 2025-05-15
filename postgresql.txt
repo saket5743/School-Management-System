@@ -1,0 +1,20 @@
+BEGIN TRANSACTION;
+
+-- Step 1
+UPDATE inventory SET quantity = quantity - 10 WHERE item_id = 1;
+SAVEPOINT after_step1;
+
+-- Step 2
+UPDATE inventory SET quantity = quantity + 10 WHERE item_id = 2;
+
+-- Suppose an error occurs here
+-- Rollback to the savepoint
+ROLLBACK TO SAVEPOINT after_step1;
+
+-- Continue with other operations
+COMMIT;
+
+
+
+-- Revoke SELECT and INSERT privileges on the employees table from user 'john_doe'
+REVOKE SELECT, INSERT ON employees FROM john_doe;
