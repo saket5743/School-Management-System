@@ -9,7 +9,7 @@ import { CiSettings } from "react-icons/ci";
 const Sidebar = () => {
   const location = useLocation();
   const teacherPaths = ["/teachers", "/addteachers", "/listteachers", "/teacherdetail"];
-  const studentPaths = ["/student", "/addstudent", "/liststudent"];
+  const studentPaths = ["/student", "/addstudent", "/liststudent", "/studentdetail"];
   const isTeacherActive = teacherPaths.includes(location.pathname);
   const isStudentActive = studentPaths.includes(location.pathname);
 

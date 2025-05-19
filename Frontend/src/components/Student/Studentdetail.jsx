@@ -31,10 +31,10 @@ const AvatarGroup = ({ avatars, max = 5 }) => {
   );
 };
 
-const TeacherDetail = () => {
+const Studentdetail = () => {
   const navigate = useNavigate();
   const location = useLocation();
-  const {fullname, subject, gender} = location.state || {};
+  const {name, classassigned, gender} = location.state || {};
 
   const allAvatars = [
     'https://randomuser.me/api/portraits/women/1.jpg',
@@ -54,19 +54,19 @@ const TeacherDetail = () => {
       </div>
       <div>
         <div className="flex">
-          <div className="flex py-6 px-12 w-[350px] gap-4">
+          <div className="flex py-6 px-12 w-[450px] gap-4">
             <button className="bg-white text-black px-4 py-2 rounded-[4px] border border-gray-300">
               Export CSV
             </button>
             <button
-              onClick={() => navigate("/addteachers")}
+              onClick={() => navigate("/addstudent")}
               className="bg-[#509CDB] text-white px-4 py-2 rounded-[4px]"
             >
-              Add Teachers
+              Add Students
             </button>
           </div>
 
-          <div className="flex justify-end w-[130vh] py-5 gap-4">
+          <div className="flex justify-end w-[110vh] py-5 gap-4">
             <div className="w-[24px] h-[24px] p-2">
               <FiBell className="text-xl" />
             </div>
@@ -104,8 +104,8 @@ const TeacherDetail = () => {
             <img src="https://newprofilepic.photo-cdn.net//assets/images/article/profile.jpg?90af0c8" alt="profile pic" className='w-[280px] h-[280px] rounded-[150px] mt-1' />
             </div>
             <div className='mt-4 flex flex-col justify-center items-center gap-2'>
-              <p className='font-semibold'>{fullname}</p>
-              <p className='text-[#A7A7A7] text-xs'>{subject} Teacher</p>
+              <p className='font-semibold'>{name}</p>
+              <p className='text-[#A7A7A7] text-xs'>{classassigned} Standard</p>
             </div>
             <div className='flex gap-10 ml-12 mt-8'>
               <div className='bg-[#EFF3FA] size-6 w-[38px] h-[40px] p-1 rounded-[8px]'>
@@ -152,7 +152,7 @@ const TeacherDetail = () => {
 
           <div className='mt-9 flex flex-col gap-5'>
             <div>
-              <p className='text-xs'>Teachers from the same class</p>
+              <p className='text-xs'>Students from the same class</p>
             </div>
             <div>
             <AvatarGroup avatars={allAvatars} max={5} />
@@ -167,4 +167,4 @@ const TeacherDetail = () => {
   );
 }
 
-export default TeacherDetail
+export default Studentdetail

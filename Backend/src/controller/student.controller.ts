@@ -3,6 +3,18 @@ import poole from "../connect/db";
 import asyncHandler from "../utils/asyncHandler";
 import bcrypt from 'bcrypt';
 import jwt from 'jsonwebtoken';
+import nodemailer from 'nodemailer';
+
+const transporter = nodemailer.createTransport({
+  service: "gmail",
+  auth: {
+    user: "saketkumar.93864@gmail.com",
+    pass: "ckks wlgm wccc tlam",
+  },
+  tls: {
+    rejectUnauthorized: false,
+  },
+});
 
 interface RegisterStudentRequestBody {
   name: string;
@@ -56,14 +68,28 @@ const registerStudent = asyncHandler(
       );
 
     if (result.rows.length > 0) {
-        const { name, email } = result.rows[0];
-        res.status(201).json({
-          message: "Student Registered Successfully.",
-          student: { name, email },
-        });
-      } else {
-        res.status(500).json({ message: "Student Registration failed." });
-      }
+      const { name, email } = result.rows[0];
+      res.status(201).json({
+        message: "Student Registered Successfully.",
+        student: { name, email },
+      });
+      const mailOptions = {
+        from: "saketkumar.93864@gmail.com",
+        to: email,
+        subject: "Welcome to Our School!",
+        text: `Dear ${name},\n\nYou have been successfully added as a student of class ${classAssigned}.\n\nWelcome aboard!\n\nBest Regards,\nSchool Team`,
+      };
+      transporter.sendMail(mailOptions, (err, info) => {
+        if (err) {
+          console.error("Error sending email:", err);
+        } else {
+          console.log("Email sent: " + info.response);
+        }
+      });
+      console.log(mailOptions, "mailoptionsssss");
+    } else {
+      res.status(500).json({ message: "Student Registration failed." });
+    }
     } catch (error) {
       console.error("Error registering student:", error);
       res.status(500).json({ message: "Internal server error." });

@@ -14,6 +14,7 @@ import SchoolLogin from "./components/Dashboard/SchoolLogin";
 import NoStudent from "./components/Student/NoStudent";
 import AddStudent from "./components/Student/AddStudent";
 import ListStudent from "./components/Student/ListStudent";
+import Studentdetail from "./components/Student/Studentdetail";
 
 function App() {
   return (
@@ -39,6 +40,7 @@ function App() {
           <Route path="/student" element={<NoStudent />} />
           <Route path="/addstudent" element={<AddStudent />} />
           <Route path="/liststudent" element={<ListStudent />} />
+          <Route path="/studentdetail" element={<Studentdetail />} />
         </Routes>
       </div>
     </div>

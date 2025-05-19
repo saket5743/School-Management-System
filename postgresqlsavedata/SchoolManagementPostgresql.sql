@@ -18,3 +18,5 @@ INSERT INTO students (name, email, classAssigned, gender, password, phone)
 VALUES ('Arjun Singh', 'arjun@gmail.com', 5, 'Male', 'Arjun@123456', '2587413698');
 
 DELETE FROM teachers WHERE fullname = 'Saket Kumar';
+
+DELETE FROM students WHERE name = 'Saket Kumar';

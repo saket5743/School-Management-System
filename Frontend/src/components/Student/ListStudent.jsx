@@ -81,7 +81,7 @@ const ListStudent = () => {
                 <FiBell className="text-xl" />
               </div>
               <div className="w-[120px] h-[40px] p-1">
-                <button onClick={() => navigate("/")}>Log out</button>
+                <button onClick={() => navigate("/dashboard")}>Log out</button>
               </div>
             </div>
           </div>
@@ -123,7 +123,7 @@ const ListStudent = () => {
   
               <tbody>
                 {filteredData.map((student) => (
-                  <tr key={student.id} className="p-[16px 17px 8px] flex px-2 gap-[0px] text-[#424242] mt-4 cursor-pointer">
+                  <tr key={student.id} onClick={()=>navigate('/studentdetail', {state:{name:student.name, gender:student.gender, classassigned:student.classassigned}})} className="p-[16px 17px 8px] flex px-2 gap-[0px] text-[#424242] mt-4 cursor-pointer">
                     <td className="w-[170px]">{student.id}</td>
                     <td className="w-[195px]">{student.name}</td>
                     <td className="w-[260px]">{student.email}</td>
